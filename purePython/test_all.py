@@ -1,12 +1,7 @@
 import cv2
 import os
 import numpy as np
-import basic_operations
-import edge_detection
-import filtering_smoothing
-import geometric_transformations
-import histogram_processing
-import morphological_operations
+from utils import basic_operations, edge_detection, filtering_smoothing, geometric_transformations, histogram_processing, morphological_operations
 
 # Define test categories and their respective output folders
 test_categories = {
