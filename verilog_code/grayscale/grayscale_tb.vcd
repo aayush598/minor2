@@ -1,0 +1,82 @@
+$date
+	Tue Mar 18 13:11:15 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module grayscale_tb $end
+$var wire 8 ! gray [7:0] $end
+$var reg 8 " B [7:0] $end
+$var reg 8 # G [7:0] $end
+$var reg 8 $ R [7:0] $end
+$scope module uut $end
+$var wire 8 % B [7:0] $end
+$var wire 8 & G [7:0] $end
+$var wire 8 ' R [7:0] $end
+$var wire 8 ( gray [7:0] $end
+$var reg 16 ) gray_calc [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b100110010110011 )
+b1001100 (
+b11111111 '
+b0 &
+b0 %
+b11111111 $
+b0 #
+b0 "
+b1001100 !
+$end
+#10000
+b10010101 !
+b10010101 (
+b1001010101101010 )
+b11111111 #
+b11111111 &
+b0 $
+b0 '
+#20000
+b11100 !
+b11100 (
+b1110011100011 )
+b11111111 "
+b11111111 %
+b0 #
+b0 &
+#30000
+b10000000 !
+b10000000 (
+b1000000000000000 )
+b10000000 "
+b10000000 %
+b10000000 #
+b10000000 &
+b10000000 $
+b10000000 '
+#40000
+b11111111 !
+b11111111 (
+b1111111100000000 )
+b11111111 "
+b11111111 %
+b11111111 #
+b11111111 &
+b11111111 $
+b11111111 '
+#50000
+b0 !
+b0 (
+b0 )
+b0 "
+b0 %
+b0 #
+b0 &
+b0 $
+b0 '
+#60000
