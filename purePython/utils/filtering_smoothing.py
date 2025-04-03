@@ -25,7 +25,10 @@ def median_filter(img, kernel_size=3):
     return filtered_img.astype(np.uint8)
 
 def gaussian_filter(img, kernel_size=3, sigma=1.0):
-    """ Apply Gaussian Filter """
+    """ Apply Gaussian Filter (Supports both Grayscale and RGB images) """
+    if len(img.shape) == 3:  # RGB Image
+        return np.dstack([gaussian_filter(img[:, :, i], kernel_size, sigma) for i in range(img.shape[2])])
+
     pad = kernel_size // 2
     x, y = np.mgrid[-pad:pad+1, -pad:pad+1]
     gaussian_kernel = np.exp(-(x**2 + y**2) / (2 * sigma**2))
@@ -41,11 +44,14 @@ def gaussian_filter(img, kernel_size=3, sigma=1.0):
     return np.clip(filtered_img, 0, 255).astype(np.uint8)
 
 def sharpening_filter(img):
-    """ Apply Sharpening Filter """
+    """ Apply Sharpening Filter (Supports both Grayscale and RGB images) """
     kernel = np.array([[ 0, -1,  0],
                        [-1,  5, -1],
                        [ 0, -1,  0]])
     
+    if len(img.shape) == 3:  # If RGB image, apply filter to each channel separately
+        return np.dstack([sharpening_filter(img[:, :, i]) for i in range(img.shape[2])])
+
     pad = 1
     img_padded = np.pad(img, pad, mode='constant', constant_values=0)
     filtered_img = np.zeros_like(img)

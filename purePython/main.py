@@ -25,16 +25,17 @@ for category in test_categories.keys():
                 os.remove(file_path)
         print(f"Deleted all existing images in '{output_dir}'")
 
-# Load the input image (grayscale mode)
+# Load the input image (RGB mode)
 input_image_path = "images/sample.png"  # Change this to your input image path
-img = cv2.imread(input_image_path, cv2.IMREAD_GRAYSCALE)
+img = cv2.imread(input_image_path, cv2.IMREAD_COLOR)
 
 if img is None:
     print(f"Error: Unable to load image at {input_image_path}")
     exit()
 
-# Convert to binary for morphological operations
-_, binary_img = cv2.threshold(img, 128, 255, cv2.THRESH_BINARY)
+# Convert RGB to Grayscale for operations requiring binary images
+gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+_, binary_img = cv2.threshold(gray_img, 128, 255, cv2.THRESH_BINARY)
 
 # Define operations for each category
 operations = {
@@ -49,10 +50,10 @@ operations = {
         **{f"bit_plane_{i}": basic_operations.bit_plane_slicing(img, bit_plane=i) for i in range(8)}
     },
     "edgeDetection": {
-        "sobel_operator": edge_detection.sobel_operator(img),
-        "prewitt_operator": edge_detection.prewitt_operator(img),
-        "roberts_operator": edge_detection.roberts_operator(img),
-        "laplacian_operator": edge_detection.laplacian_operator(img),
+        "sobel_operator": edge_detection.sobel_operator(gray_img),
+        "prewitt_operator": edge_detection.prewitt_operator(gray_img),
+        "roberts_operator": edge_detection.roberts_operator(gray_img),
+        "laplacian_operator": edge_detection.laplacian_operator(gray_img),
     },
     "filterSmoothing": {
         "mean_filter": filtering_smoothing.mean_filter(img, kernel_size=3),

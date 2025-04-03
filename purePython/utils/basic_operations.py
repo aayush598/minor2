@@ -24,12 +24,22 @@ def gamma_correction(img, gamma=1.0):
 
 def log_transform(img):
     """ Apply logarithmic transformation """
-    c = 255 / np.log(1 + np.max(img))
+    img = img.astype(np.float32)  # Ensure it's float for log calculation
+    max_val = np.max(img)
+    if max_val == 0:
+        max_val = 1  # Avoid division by zero
+
+    c = 255 / np.log(1 + max_val)
     return np.clip(c * np.log(1 + img), 0, 255).astype(np.uint8)
 
 def inverse_log_transform(img):
     """ Apply inverse logarithmic transformation """
-    c = 255 / np.log(1 + np.max(img))
+    img = img.astype(np.float32)
+    max_val = np.max(img)
+    if max_val == 0:
+        max_val = 1  # Avoid division by zero
+
+    c = 255 / np.log(1 + max_val)
     return np.clip(np.exp(img / c) - 1, 0, 255).astype(np.uint8)
 
 def bit_plane_slicing(img, bit_plane=0):
