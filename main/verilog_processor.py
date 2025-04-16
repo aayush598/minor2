@@ -10,6 +10,13 @@ def image_to_hex_opencv(image_path, hex_path):
         for row in img_rgb:
             for r, g, b in row:
                 f.write(f"{r:02x}{g:02x}{b:02x}")
+    
+    # Save width and height for Verilog testbench
+    with open("output/input_width.txt", "w") as wf:
+        wf.write(f"{w:x}")
+    with open("output/input_height.txt", "w") as hf:
+        hf.write(f"{h:x}")
+
     return (w, h)
 
 def hex_to_image_opencv(hex_path, size, output_path):
@@ -35,6 +42,9 @@ def run_verilog(operation):
         os.system("iverilog -o sim verilog/grayscale.v verilog/tb_grayscale.v && vvp sim")
     elif operation == "negation":
         os.system("iverilog -o sim verilog/negation.v verilog/tb_negation.v && vvp sim")
+    elif operation == "flip_horizontal":
+        os.system("iverilog -o sim verilog/flip_horizontal.v verilog/tb_flip_horizontal.v && vvp sim")
+
 
 def process_image_opencv(image_path, operation):
     os.makedirs("output", exist_ok=True)

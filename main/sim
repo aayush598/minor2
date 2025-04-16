@@ -7,18 +7,23 @@
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
 :vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
-S_0x61c3c5ed6d00 .scope module, "tb_negation" "tb_negation" 2 2;
+S_0x62279000a470 .scope module, "tb_flip_horizontal" "tb_flip_horizontal" 2 2;
  .timescale -9 -12;
-v0x61c3c5efe3e0_0 .var "b_in", 7 0;
-v0x61c3c5efe4c0_0 .net "b_out", 7 0, L_0x61c3c5efeec0;  1 drivers
-v0x61c3c5efe590_0 .var "g_in", 7 0;
-v0x61c3c5efe690_0 .net "g_out", 7 0, L_0x61c3c5efed30;  1 drivers
-v0x61c3c5efe760_0 .var/i "infile", 31 0;
-v0x61c3c5efe800_0 .var/i "outfile", 31 0;
-v0x61c3c5efe8e0_0 .var/i "r", 31 0;
-v0x61c3c5efe9c0_0 .var "r_in", 7 0;
-v0x61c3c5efea80_0 .net "r_out", 7 0, L_0x61c3c5efeb80;  1 drivers
-S_0x61c3c5ee6c60 .scope module, "uut" "negation" 2 8, 3 1 0, S_0x61c3c5ed6d00;
+v0x6227900357e0_0 .var "b_in", 7 0;
+v0x6227900358c0_0 .net "b_out", 7 0, L_0x622790036530;  1 drivers
+v0x622790035960_0 .var/i "col", 31 0;
+v0x622790035a00_0 .var "g_in", 7 0;
+v0x622790035ac0_0 .net "g_out", 7 0, L_0x622790036400;  1 drivers
+v0x622790035bb0_0 .var/i "height", 31 0;
+v0x622790035c70_0 .var/i "infile", 31 0;
+v0x622790035d50_0 .var/i "outfile", 31 0;
+v0x622790035e30_0 .var/i "r", 31 0;
+v0x622790035f10_0 .var "r_in", 7 0;
+v0x622790035fd0_0 .net "r_out", 7 0, L_0x622790036300;  1 drivers
+v0x6227900360a0_0 .var/i "row", 31 0;
+v0x622790036160 .array "row_pixels", 4095 0, 23 0;
+v0x622790036220_0 .var/i "width", 31 0;
+S_0x6227900189f0 .scope module, "uut" "flip_horizontal" 2 11, 3 1 0, S_0x62279000a470;
  .timescale 0 0;
     .port_info 0 /INPUT 8 "r_in";
     .port_info 1 /INPUT 8 "g_in";
@@ -26,58 +31,110 @@ S_0x61c3c5ee6c60 .scope module, "uut" "negation" 2 8, 3 1 0, S_0x61c3c5ed6d00;
     .port_info 3 /OUTPUT 8 "r_out";
     .port_info 4 /OUTPUT 8 "g_out";
     .port_info 5 /OUTPUT 8 "b_out";
-L_0x7208fe49d018 .functor BUFT 1, C4<11111111>, C4<0>, C4<0>, C4<0>;
-v0x61c3c5ee6ee0_0 .net/2u *"_ivl_0", 7 0, L_0x7208fe49d018;  1 drivers
-L_0x7208fe49d060 .functor BUFT 1, C4<11111111>, C4<0>, C4<0>, C4<0>;
-v0x61c3c5efdbf0_0 .net/2u *"_ivl_4", 7 0, L_0x7208fe49d060;  1 drivers
-L_0x7208fe49d0a8 .functor BUFT 1, C4<11111111>, C4<0>, C4<0>, C4<0>;
-v0x61c3c5efdcd0_0 .net/2u *"_ivl_8", 7 0, L_0x7208fe49d0a8;  1 drivers
-v0x61c3c5efdd90_0 .net "b_in", 7 0, v0x61c3c5efe3e0_0;  1 drivers
-v0x61c3c5efde70_0 .net "b_out", 7 0, L_0x61c3c5efeec0;  alias, 1 drivers
-v0x61c3c5efdfa0_0 .net "g_in", 7 0, v0x61c3c5efe590_0;  1 drivers
-v0x61c3c5efe080_0 .net "g_out", 7 0, L_0x61c3c5efed30;  alias, 1 drivers
-v0x61c3c5efe160_0 .net "r_in", 7 0, v0x61c3c5efe9c0_0;  1 drivers
-v0x61c3c5efe240_0 .net "r_out", 7 0, L_0x61c3c5efeb80;  alias, 1 drivers
-L_0x61c3c5efeb80 .arith/sub 8, L_0x7208fe49d018, v0x61c3c5efe9c0_0;
-L_0x61c3c5efed30 .arith/sub 8, L_0x7208fe49d060, v0x61c3c5efe590_0;
-L_0x61c3c5efeec0 .arith/sub 8, L_0x7208fe49d0a8, v0x61c3c5efe3e0_0;
-    .scope S_0x61c3c5ed6d00;
+L_0x622790036300 .functor BUFZ 8, v0x622790035f10_0, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0x622790036400 .functor BUFZ 8, v0x622790035a00_0, C4<00000000>, C4<00000000>, C4<00000000>;
+L_0x622790036530 .functor BUFZ 8, v0x6227900357e0_0, C4<00000000>, C4<00000000>, C4<00000000>;
+v0x622790018c70_0 .net "b_in", 7 0, v0x6227900357e0_0;  1 drivers
+v0x622790035290_0 .net "b_out", 7 0, L_0x622790036530;  alias, 1 drivers
+v0x622790035370_0 .net "g_in", 7 0, v0x622790035a00_0;  1 drivers
+v0x622790035430_0 .net "g_out", 7 0, L_0x622790036400;  alias, 1 drivers
+v0x622790035510_0 .net "r_in", 7 0, v0x622790035f10_0;  1 drivers
+v0x622790035640_0 .net "r_out", 7 0, L_0x622790036300;  alias, 1 drivers
+    .scope S_0x62279000a470;
 T_0 ;
-    %vpi_func 2 14 "$fopen" 32, "output/input.hex", "r" {0 0 0};
-    %store/vec4 v0x61c3c5efe760_0, 0, 32;
-    %vpi_func 2 15 "$fopen" 32, "output/processed.hex", "w" {0 0 0};
-    %store/vec4 v0x61c3c5efe800_0, 0, 32;
-    %load/vec4 v0x61c3c5efe760_0;
+    %vpi_call 2 18 "$readmemh", "output/input_width.txt", v0x622790036160, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000000000 {0 0 0};
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %load/vec4a v0x622790036160, 4;
+    %pad/u 32;
+    %store/vec4 v0x622790036220_0, 0, 32;
+    %vpi_call 2 20 "$readmemh", "output/input_height.txt", v0x622790036160, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000000000 {0 0 0};
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %load/vec4a v0x622790036160, 4;
+    %pad/u 32;
+    %store/vec4 v0x622790035bb0_0, 0, 32;
+    %vpi_func 2 23 "$fopen" 32, "output/input.hex", "r" {0 0 0};
+    %store/vec4 v0x622790035c70_0, 0, 32;
+    %vpi_func 2 24 "$fopen" 32, "output/processed.hex", "w" {0 0 0};
+    %store/vec4 v0x622790035d50_0, 0, 32;
+    %load/vec4 v0x622790035c70_0;
     %cmpi/e 0, 0, 32;
     %jmp/1 T_0.2, 4;
     %flag_mov 8, 4;
-    %load/vec4 v0x61c3c5efe800_0;
+    %load/vec4 v0x622790035d50_0;
     %cmpi/e 0, 0, 32;
     %flag_or 4, 8;
 T_0.2;
     %jmp/0xz  T_0.0, 4;
-    %vpi_call 2 18 "$display", "Error opening file." {0 0 0};
-    %vpi_call 2 19 "$finish" {0 0 0};
+    %vpi_call 2 27 "$display", "\342\235\214 Error opening file." {0 0 0};
+    %vpi_call 2 28 "$finish" {0 0 0};
 T_0.0 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x6227900360a0_0, 0, 32;
 T_0.3 ;
-    %vpi_func 2 22 "$feof" 32, v0x61c3c5efe760_0 {0 0 0};
-    %nor/r;
-    %flag_set/vec4 8;
-    %jmp/0xz T_0.4, 8;
-    %vpi_func 2 23 "$fscanf" 32, v0x61c3c5efe760_0, "%2x%2x%2x", v0x61c3c5efe9c0_0, v0x61c3c5efe590_0, v0x61c3c5efe3e0_0 {0 0 0};
-    %store/vec4 v0x61c3c5efe8e0_0, 0, 32;
+    %load/vec4 v0x6227900360a0_0;
+    %load/vec4 v0x622790035bb0_0;
+    %cmp/s;
+    %jmp/0xz T_0.4, 5;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x622790035960_0, 0, 32;
+T_0.5 ;
+    %load/vec4 v0x622790035960_0;
+    %load/vec4 v0x622790036220_0;
+    %cmp/s;
+    %jmp/0xz T_0.6, 5;
+    %vpi_func 2 34 "$fscanf" 32, v0x622790035c70_0, "%2x%2x%2x", v0x622790035f10_0, v0x622790035a00_0, v0x6227900357e0_0 {0 0 0};
+    %store/vec4 v0x622790035e30_0, 0, 32;
     %delay 1000, 0;
-    %vpi_call 2 25 "$fwrite", v0x61c3c5efe800_0, "%02x%02x%02x", v0x61c3c5efea80_0, v0x61c3c5efe690_0, v0x61c3c5efe4c0_0 {0 0 0};
+    %load/vec4 v0x622790035fd0_0;
+    %load/vec4 v0x622790035ac0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v0x6227900358c0_0;
+    %concat/vec4; draw_concat_vec4
+    %ix/getv/s 4, v0x622790035960_0;
+    %store/vec4a v0x622790036160, 4, 0;
+    %load/vec4 v0x622790035960_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x622790035960_0, 0, 32;
+    %jmp T_0.5;
+T_0.6 ;
+    %load/vec4 v0x622790036220_0;
+    %subi 1, 0, 32;
+    %store/vec4 v0x622790035960_0, 0, 32;
+T_0.7 ;
+    %load/vec4 v0x622790035960_0;
+    %cmpi/s 0, 0, 32;
+    %flag_inv 5; GE is !LT
+    %jmp/0xz T_0.8, 5;
+    %ix/getv/s 4, v0x622790035960_0;
+    %load/vec4a v0x622790036160, 4;
+    %parti/s 8, 16, 6;
+    %ix/getv/s 4, v0x622790035960_0;
+    %load/vec4a v0x622790036160, 4;
+    %parti/s 8, 8, 5;
+    %ix/getv/s 4, v0x622790035960_0;
+    %load/vec4a v0x622790036160, 4;
+    %parti/s 8, 0, 2;
+    %vpi_call 2 41 "$fwrite", v0x622790035d50_0, "%02x%02x%02x", S<2,vec4,u8>, S<1,vec4,u8>, S<0,vec4,u8> {3 0 0};
+    %load/vec4 v0x622790035960_0;
+    %subi 1, 0, 32;
+    %store/vec4 v0x622790035960_0, 0, 32;
+    %jmp T_0.7;
+T_0.8 ;
+    %load/vec4 v0x6227900360a0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x6227900360a0_0, 0, 32;
     %jmp T_0.3;
 T_0.4 ;
-    %vpi_call 2 28 "$fclose", v0x61c3c5efe760_0 {0 0 0};
-    %vpi_call 2 29 "$fclose", v0x61c3c5efe800_0 {0 0 0};
-    %vpi_call 2 30 "$finish" {0 0 0};
+    %vpi_call 2 45 "$fclose", v0x622790035c70_0 {0 0 0};
+    %vpi_call 2 46 "$fclose", v0x622790035d50_0 {0 0 0};
+    %vpi_call 2 47 "$finish" {0 0 0};
     %end;
     .thread T_0;
 # The file index is used to find the file name in the following table.
 :file_names 4;
     "N/A";
     "<interactive>";
-    "verilog/tb_negation.v";
-    "verilog/negation.v";
+    "verilog/tb_flip_horizontal.v";
+    "verilog/flip_horizontal.v";

@@ -15,7 +15,7 @@ if uploaded_file:
     img = cv2.imread(temp_path)
     st.image(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), caption="Original Image", use_column_width=True)
 
-    operation = st.selectbox("Choose an Operation", ["Brightness", "Contrast", "Grayscale", "Negation"])
+    operation = st.selectbox("Choose an Operation", ["Brightness", "Contrast", "Grayscale", "Negation","Flip_Horizontal"])
 
     if st.button("⚙️ Run Verilog Processing"):
         op_key = operation.lower()
