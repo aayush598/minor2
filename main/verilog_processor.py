@@ -33,6 +33,8 @@ def run_verilog(operation):
         os.system("iverilog -o sim verilog/contrast.v verilog/tb_contrast.v && vvp sim")
     elif operation == "grayscale":
         os.system("iverilog -o sim verilog/grayscale.v verilog/tb_grayscale.v && vvp sim")
+    elif operation == "negation":
+        os.system("iverilog -o sim verilog/negation.v verilog/tb_negation.v && vvp sim")
 
 def process_image_opencv(image_path, operation):
     os.makedirs("output", exist_ok=True)
