@@ -26,20 +26,16 @@ def hex_to_image_opencv(hex_path, size, output_path):
     cv2.imwrite(output_path, img_bgr)
     return img_bgr
 
-def run_verilog():
-    os.system("iverilog -o sim brightness.v tb_brightness.v && vvp sim")
+def run_verilog(operation):
+    if operation == "brightness":
+        os.system("iverilog -o sim verilog/brightness.v verilog/tb_brightness.v && vvp sim")
+    elif operation == "contrast":
+        os.system("iverilog -o sim verilog/contrast.v verilog/tb_contrast.v && vvp sim")
+    elif operation == "grayscale":
+        os.system("iverilog -o sim verilog/grayscale.v verilog/tb_grayscale.v && vvp sim")
 
-def run_contrast_verilog():
-    os.system("iverilog -o sim contrast.v tb_contrast.v && vvp sim")
-
-def process_image_opencv(image_path):
+def process_image_opencv(image_path, operation):
     os.makedirs("output", exist_ok=True)
     size = image_to_hex_opencv(image_path, "output/input.hex")
-    run_verilog()
-    return hex_to_image_opencv("output/processed.hex", size, "output/final_image.png")
-
-def process_contrast_opencv(image_path):
-    os.makedirs("output", exist_ok=True)
-    size = image_to_hex_opencv(image_path, "output/input.hex")
-    run_contrast_verilog()
+    run_verilog(operation)
     return hex_to_image_opencv("output/processed.hex", size, "output/final_image.png")
